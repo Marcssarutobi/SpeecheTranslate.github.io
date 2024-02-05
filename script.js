@@ -81,6 +81,16 @@ translatebtn.addEventListener("click",()=>{
         toText.value = data.responseData.translatedText
     })
 })
+formText.addEventListener('input',()=>{
+    var text = formText.value,
+    translateFrom = selectTag[0].value,
+    translateTo = selectTag[1].value
+
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}!&langpair=${translateFrom}|${translateTo}`
+    fetch(apiUrl).then(res => res.json()).then(data =>{
+        toText.value = data.responseData.translatedText
+    })
+})
 
 icons.forEach(icon =>{
     icon.addEventListener("click",( {target} )=>{
